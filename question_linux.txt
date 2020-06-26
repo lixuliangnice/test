@@ -1,0 +1,36 @@
+nameserver 127.0.0.53
+
+
+遇到错误
+
+1. 在更新ubuntu时遇到以下错误
+
+Some index files failed to download. They have been ignored, or old ones used instead.
+
+解决方法：
+（1）：sudo rm /var/lib/apt/lists/* -vf
+	   sudo apt-get update     # 失败
+	   
+（2）：sudo rm -rf /var/lib/apt/lists/*
+
+	   sudo apt-get remove .*:arm64
+
+	   sudo dpkg --remove-architecture arm64   # 失败
+
+（3）：修改  /etc/apt/source.list 文件全部替换为阿里云国内镜像源  #成功
+
+
+	deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+	deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+	deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+	deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+	deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+	deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+	deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+	deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+	deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+	deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+
+
+
+
